@@ -87,11 +87,15 @@ The hash salt can be any value but shouldn't be stored in source control. Use `e
 ~/drupal-beanstalk$ eb setenv HASH_SALT=randomnumbersandletters89237492374
 ```
 
-The sync directory is not a secret but is randomly generated when you install Drupal. Connect to the instance to find the value for this variable. Then, replace the placeholder value in `.ebextensions/drupal.config` with the correct value.
+The sync directory is not a secret but is randomly generated when you install Drupal. Connect to the instance to find the value for this variable.
 ```
 ~/drupal-beanstalk$ eb ssh
 [ec2-user ~]$ tail /var/app/current/sites/default/settings.php
-[ec2-user ~]$ exit
+  $config_directories['sync'] = 'sites/default/files/config_4ccfX2sPQm79p1mk5IbUq9S_FokcENO4mxyC-L18-4g_xKj_7j9ydn31kDOYOgnzMu071Tvc4Q/sync';
+```
+Replace the placeholder value in `.ebextensions/drupal.config` with the value shown after `$config_directories['sync']`.
+```
+    SYNC_DIR: sites/default/files/config_XXXXXXXXXXXXXXX/sync
 ```
 
 Remove the custom load balancer configuration to open the site to the Internet.
