@@ -21,6 +21,7 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 ~$ curl https://github.com/awslabs/eb-php-drupal/releases/download/v1.0/eb-php-drupal-v1.zip -o eb-php-drupal.zip
 ~$ tar -xvf drupal.tar.gz && mv drupal-8.2.2 drupal-beanstalk && cd drupal-beanstalk
 ~/drupal-beanstalk$ unzip ../eb-php-drupal.zip
+```
 
 ## Create an environment
 ~/drupal-beanstalk$ eb init --platform php5.6 --region us-east-2
