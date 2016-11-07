@@ -34,7 +34,7 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 Modify the configuration files in the .ebextensions folder with the IDs of your [default VPC and subnets](https://console.aws.amazon.com/vpc/home#subnets:filter=default), and [your public IP address](https://www.google.com/search?q=what+is+my+ip). 
 
  - `.ebextensions/efs-create.config` creates an EFS file system and mount points in each Availability Zone / subnet in your VPC.
- - `.ebextensions/ssh.config` restricts access to your environment to your IP address to protect it during the Drupal installation process.
+ - `.ebextensions/dev.config` restricts access to your environment to your IP address to protect it during the Drupal installation process.
 
 ## Deploy Drupal to your environment
 Deploy the project code to your Elastic Beanstalk environment. 
@@ -48,7 +48,7 @@ First, confirm that your environment is `Ready` with `eb status`. Environment cr
 
 ### NOTE: security configuration
 
-This project includes a configuration file (`loadbalancer-sg.config`) that creates a security group and assigns it to the environment's load balancer, using the IP address that you configured in `ssh.config` to restrict HTTP access on port 80 to connections from your network. Otherwise, an outside party could potentially connect to your site before you install Drupal and configure your admin account.
+This project includes a configuration file (`loadbalancer-sg.config`) that creates a security group and assigns it to the environment's load balancer, using the IP address that you configured in `dev.config` to restrict HTTP access on port 80 to connections from your network. Otherwise, an outside party could potentially connect to your site before you install Drupal and configure your admin account.
 
 You can [view the related SGs in the EC2 console](https://console.aws.amazon.com/ec2/v2/home#SecurityGroups:search=drupal-beanstalk)
 
