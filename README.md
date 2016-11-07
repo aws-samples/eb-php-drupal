@@ -24,11 +24,13 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 ```
 
 ## Create an environment
+```
 ~/drupal-beanstalk$ eb init --platform php5.6 --region us-east-2
 (specify a different region if you have a preference)
 ~/drupal-beanstalk$ eb ssh --setup
 ~/drupal-beanstalk$ eb create drupal-beanstalk --sample --database
 (choose database username/password, CTRL+C to exit once create is in-progress)
+```
 
 ## Networking configuration
 Modify the configuration files in the .ebextensions folder with the IDs of your [default VPC and subnets](https://console.aws.amazon.com/vpc/home#subnets:filter=default), and [your public IP address](https://www.google.com/search?q=what+is+my+ip). 
