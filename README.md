@@ -35,7 +35,7 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 
 2. Download the configuration files in this repository
 
-        ~$ curl https://github.com/awslabs/eb-php-drupal/releases/download/v1.0/eb-php-drupal-v1.zip -o eb-php-drupal.zip
+        ~$ wget https://github.com/awslabs/eb-php-drupal/releases/download/v1.0/eb-php-drupal-v1.zip
 
 3. Extract Drupal and change the name of the folder
 
@@ -45,7 +45,7 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 
 4. Extract the configuration files over the Drupal installation
 
-        ~/drupal-beanstalk$ unzip ~/eb-php-drupal.zip
+        ~/drupal-beanstalk$ unzip ~/eb-php-drupal-v1.zip
          creating: .ebextensions/
         inflating: .ebextensions/dev.config
         inflating: .ebextensions/drupal.config
@@ -61,7 +61,7 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 
 1. Configure a local EB CLI repository with the PHP platform. Choose a [supported region](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region) that is close to you.
 
-        ~/drupal-beanstalk$ eb init --platform php7.0 --region us-west-
+        ~/drupal-beanstalk$ eb init --platform php7.0 --region us-west-2
         Application drupal-beanstalk has been created.
 
 2. Configure SSH. Create a key that Elastic Beanstalk will assign to the EC2 instances in your environment to allow you to connect to them later. You can also choose an existing key pair if you have the private key locally.
