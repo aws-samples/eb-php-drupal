@@ -1,7 +1,7 @@
 # Deploying drupal on Elastic Beanstalk
 Use the EB CLI to create an Elastic Beanstalk environment with an attached RDS DB and EFS file system to provide Drupal with a MySQL database and shared storage for uploaded files.
 
-You can also run the database outside of the environment to decouple compute and database resources. See the Elastic Beanstalk Developer Guide for a tutorial with instructions that use an external DB instance: [Deploying a High-Availability Drupal Website with an External Amazon RDS Database to Elastic Beanstalk](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hadrupal-tutorial.html). The tutorial also uses the AWS Management Console instead of the EB CLI.
+You can also run the database outside of the environment to decouple compute and database resources. See the Elastic Beanstalk Developer Guide for a tutorial with instructions that use an external DB instance: [Deploying a High-Availability Drupal Website with an External Amazon RDS Database to Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hadrupal-tutorial.html). The tutorial also uses the AWS Management Console instead of the EB CLI.
 
 These instructions were tested with Drupal 8.2.2.
 
