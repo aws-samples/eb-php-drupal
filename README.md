@@ -5,7 +5,7 @@ NOTE: Amazon EFS is not available in all AWS regions. Check the [Region Table](h
 
 You can also run the database outside of the environment to decouple compute and database resources. See the Elastic Beanstalk Developer Guide for a tutorial with instructions that use an external DB instance: [Deploying a High-Availability Drupal Website with an External Amazon RDS Database to Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hadrupal-tutorial.html). The tutorial also uses the AWS Management Console instead of the EB CLI.
 
-These instructions were tested with Drupal 8.2.2.
+These instructions were tested with Drupal 8.5.3.
 
 ## Install the EB CLI
 
@@ -37,21 +37,21 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 
 1. Download Drupal.
 
-        ~$ curl https://ftp.drupal.org/files/projects/drupal-8.2.2.tar.gz -o drupal.tar.gz
+        ~$ curl https://ftp.drupal.org/files/projects/drupal-8.5.3.tar.gz -o drupal.tar.gz
 
 2. Download the configuration files in this repository
 
-        ~$ wget https://github.com/awslabs/eb-php-drupal/releases/download/v1.0/eb-php-drupal-v1.zip
+        ~$ wget https://github.com/aws-samples/eb-php-drupal/releases/download/v1.0/eb-php-drupal-v1.zip
 
 3. Extract Drupal and change the name of the folder
 
         ~$ tar -xvf drupal.tar.gz
-        ~$ mv drupal-8.2.2 drupal-beanstalk
+        ~$ mv drupal-8.5.3 drupal-beanstalk
         ~$ cd drupal-beanstalk
 
 4. Extract the configuration files over the Drupal installation
 
-        ~/drupal-beanstalk$ unzip ~/eb-php-drupal-v1.zip
+        ~/drupal-beanstalk$ unzip ../eb-php-drupal-v1.zip
          creating: .ebextensions/
         inflating: .ebextensions/dev.config
         inflating: .ebextensions/drupal.config
