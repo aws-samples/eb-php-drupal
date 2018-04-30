@@ -1,16 +1,9 @@
-###############################################################################
-## Find your default VPC in the console, and fill in the VPC ID and subnet IDs
-## below. If you have more or less than three AZs and subnets in your region,
-## adjust the number of Subnet Option and Mount Target Resource entries to 
-## match.
-###############################################################################
-
 Parameters:
-  EFSFileSystemName: 
+  EFSFileSystemName:
     Type: String
     Description: "The name of the file system"
     Default: "EB-EFS-FileSystem"
-  PerformanceMode: 
+  PerformanceMode:
     Type: String
     Description: "The performance mode: *generalPurpose* or *maxIO*"
     Default: "generalPurpose"
@@ -74,7 +67,7 @@ Resources:
       GroupDescription: Security group for mount target
       VpcId: {Ref: VPCId}
 
-  MountTargetSecurityGroupIngress: 
+  MountTargetSecurityGroupIngress:
     Type: AWS::EC2::SecurityGroupIngress
     Properties:
       GroupId:
