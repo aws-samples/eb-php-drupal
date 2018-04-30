@@ -41,7 +41,7 @@ If you don't have pip, follow the instructions [here](http://docs.aws.amazon.com
 
 2. Download the configuration files in this repository
 
-        ~$ wget https://github.com/aws-samples/eb-php-drupal/releases/download/v1.0/eb-php-drupal-v1.zip
+        ~$ wget https://github.com/aws-samples/eb-php-drupal/releases/download/v1.1/eb-php-drupal-v1.zip
 
 3. Extract Drupal and change the name of the folder
 
