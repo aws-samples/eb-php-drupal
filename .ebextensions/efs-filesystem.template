@@ -1,0 +1,93 @@
+###############################################################################
+## Find your default VPC in the console, and fill in the VPC ID and subnet IDs
+## below. If you have more or less than three AZs and subnets in your region,
+## adjust the number of Subnet Option and Mount Target Resource entries to 
+## match.
+###############################################################################
+
+Parameters:
+  EFSFileSystemName: 
+    Type: String
+    Description: "The name of the file system"
+    Default: "EB-EFS-FileSystem"
+  PerformanceMode: 
+    Type: String
+    Description: "The performance mode: *generalPurpose* or *maxIO*"
+    Default: "generalPurpose"
+  VPCId:
+    Type: String
+    Description: "Your VPC ID"
+    Default: "vpc-XXXXXXXX"
+## Subnet Options
+  SubnetA:
+    Type: String
+    Description: "The subnet for Availability Zone A"
+    Default: "subnet-XXXXXXXX"
+  SubnetB:
+    Type: String
+    Description: "The subnet for Availability Zone B"
+    Default: "subnet-XXXXXXXX"
+  SubnetC:
+    Type: String
+    Description: "The subnet for Availability Zone C"
+    Default: "subnet-XXXXXXXX"
+
+Resources:
+## Mount Target Resources
+  MountTargetA:
+    Type: AWS::EFS::MountTarget
+    Properties:
+      FileSystemId: {Ref: FileSystem}
+      SecurityGroups:
+      - {Ref: MountTargetSecurityGroup}
+      SubnetId: {Ref: SubnetA}
+  MountTargetB:
+    Type: AWS::EFS::MountTarget
+    Properties:
+      FileSystemId: {Ref: FileSystem}
+      SecurityGroups:
+      - {Ref: MountTargetSecurityGroup}
+      SubnetId: {Ref: SubnetB}
+  MountTargetC:
+    Type: AWS::EFS::MountTarget
+    Properties:
+      FileSystemId: {Ref: FileSystem}
+      SecurityGroups:
+      - {Ref: MountTargetSecurityGroup}
+      SubnetId: {Ref: SubnetC}
+
+##############################################
+#### Do not modify values below this line ####
+##############################################
+
+  FileSystem:
+    Type: AWS::EFS::FileSystem
+    Properties:
+      PerformanceMode: {Ref: PerformanceMode}
+      FileSystemTags:
+      - Key: Name
+        Value: {Ref: EFSFileSystemName}
+
+  MountTargetSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for mount target
+      VpcId: {Ref: VPCId}
+
+  MountTargetSecurityGroupIngress: 
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId:
+        Fn::GetAtt: [MountTargetSecurityGroup, GroupId]
+      IpProtocol: tcp
+      ToPort: 2049
+      FromPort: 2049
+      SourceSecurityGroupId:
+        Fn::GetAtt: [MountTargetSecurityGroup, GroupId]
+
+Outputs:
+  FileSystemId:
+    Description: File system ID
+    Value: { "Ref" : "FileSystem" }
+    Export:
+      Name: EfsFileSystemId
