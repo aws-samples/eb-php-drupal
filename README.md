@@ -111,7 +111,7 @@ Modify the configuration files in the .ebextensions folder with the IDs of your 
   Use this configuration file to create an Amazon EFS file system in a development environment. When you no longer need the environment and terminate it, the file system is cleaned up for you.
   For production environments, consider creating the file system using Amazon EFS directly.
   For details, see [Creating an Amazon Elastic File System](http://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html).
- - `.ebextensions/ssh.config` restricts access to your environment to your IP address to protect it during the Drupal installation process. Replace the placeholder IP address near the top of the file with your public IP address.
+ - `.ebextensions/dev.config` restricts access to your environment to your IP address to protect it during the Drupal installation process. Replace the placeholder IP address near the top of the file with your public IP address.
 
 ## Deploy Drupal to your environment
 Deploy the project code to your Elastic Beanstalk environment.
